@@ -2,15 +2,15 @@ import express from "express";
 import cors from "cors";
 import driverRouter from "./routes/driverRoutes.js";
 import passengerRouter from "./routes/passengerRoutes.js"
-import MapLocationRouter from "./routes/MapLocationRoutes.js";
 import feedbackRouter from "./routes/feedbackRoutes.js";
+import driverLocationRouter from "./routes/driverLocationRoutes.js";
+
 import mongoose from "mongoose";
 
 const app = express();
-
-app.use(express.json());
-
 app.use(cors());
+app.use(express.json({ limit: "10mb" }));
+
 
 app.get("/", (request, response) => {
   console.log(request);
@@ -19,8 +19,9 @@ app.get("/", (request, response) => {
 
 app.use("/drivers", driverRouter);
 app.use("/passengers",passengerRouter);
-app.use("/map_location",MapLocationRouter);
-app.use("/feedback",feedbackRouter)
+app.use("/feedback",feedbackRouter);
+app.use("/driverLocation",driverLocationRouter);
+
 
 
 

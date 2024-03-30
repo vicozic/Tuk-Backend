@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MapLocationSchema = mongoose.Schema(
+const driverLocationSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -10,15 +10,19 @@ const MapLocationSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    from: {
+    latitude: {
+      type: Number,
+      required: true,
+    },
+    longitude: {
+      type: Number,
+      required: true,
+    },
+    licenseNo: {
       type: String,
       required: true,
     },
-    to: {
-      type: String,
-      required: true,
-    },
-    NOcar: {
+    profile: {
       type: String,
       required: true,
     },
@@ -28,4 +32,4 @@ const MapLocationSchema = mongoose.Schema(
   }
 );
 
-export const MapLocation = mongoose.model("MapLocation", MapLocationSchema);
+export const DriverLocation = mongoose.model("DriverLocation", driverLocationSchema);

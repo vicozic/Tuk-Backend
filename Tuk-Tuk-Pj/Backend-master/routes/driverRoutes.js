@@ -12,7 +12,8 @@ driverRouter.post("/", async (req, res) => {
       !req.body.phoneNumber ||
       !req.body.licenseNo ||
       !req.body.NRC ||
-      !req.body.address
+      !req.body.address ||
+      !req.body.profile
     ) {
       res.status(400).send({ message: "Send all required fields!" });
     } else {
@@ -24,6 +25,7 @@ driverRouter.post("/", async (req, res) => {
         licenseNo: req.body.licenseNo,
         NRC: req.body.NRC,
         address: req.body.address,
+        profile: req.body.profile,
       };
       const driver = await Driver.create(newDriver);
       res.status(201).send(driver);
